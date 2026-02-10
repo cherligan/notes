@@ -34,7 +34,6 @@ header {
   justify-content: space-between;
   background: burlywood;
   color: brown;
-  border-bottom: 1px solid #1a1a1a;
   padding: 20px;
 }
 
@@ -54,7 +53,16 @@ header span {
   opacity: 0.9;
 }
 
-li {
+ul
+{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li 
+{
+  margin-bottom: 8px; 
   font-size: medium;
 }
 
@@ -88,28 +96,21 @@ center {
   padding: 10px;
 }
 
-.note-preview {
+.screen
+{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 16px;
-  /* border: 1px solid #1a1a1a;
-  border-radius: 10px; */
-  cursor: pointer;
-  margin-bottom: 8px;
+  height: 100vh;
 }
 
-.note-title {
+.left-path
+{
+  display: flex;
   flex: 1;
+  background: #e9b2b2;
 }
 
-.note-time {
-  margin: 0 12px;
-  color: blue;
-}
-
-.note-delete {
-  background: none;
-  border: none;
-  cursor: pointer;
+.right-path
+{
+  display: flex;
+  flex: 1;
 }

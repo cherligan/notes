@@ -1,33 +1,45 @@
 import Header from "./components/Header"
-import Note from "./components/Note"
+import Note from "./components/Note/Note"
 import Button from "./components/Button/Button"
 import { useState } from "react"
 export default function App() {
-  const [content, setContent] = useState('press')
+  const [contentType, setContentType] = useState(null)
   function handleClick(type)
   {
-    console.log('btn clicked', type)
-    setContent(type)
+    setContentType(type)
   }
   return (
     <div>
       <Header />
-      <main>
-        <section>
-          <ul>
-            <li>
-              <Note
-              title={"Первая"}
-              time={"2020"}
-              />
-            </li>
-          </ul>
-        </section>
-        <Button onClick={() => handleClick('first')}>Первая кнопка</Button>
-        <Button onClick={() => handleClick('second')}>Вторая кнопка</Button>
-        <Button onClick={() => handleClick('third')}>Третья кнопка</Button>
-        <p>{content}</p>
-      </main>
+      <div className="screen">
+        <div className="left-path">
+          <main>
+            <section>
+              <ul>
+                <li>
+                  <Note
+                  time={"2020"}
+                  title={"Первая"}
+                  />
+                </li>
+                <li>
+                  <Note
+                  title={"Первая"}
+                  time={"2020"}
+                  />
+                </li>
+              </ul>
+            </section>
+            <Button isActive={contentType == 'first'} onClick={() => handleClick('first')}>Первая кнопка</Button>
+            <Button isActive={contentType == 'second'} onClick={() => handleClick('second')}>Вторая кнопка</Button>
+            <Button isActive={contentType == 'third'} onClick={() => handleClick('third')}>Третья кнопка</Button>
+            <p>{contentType}</p>
+          </main>
+        </div>
+        <div className="right-path">
+          правая часть
+        </div>
+      </div>
     </div>
   )
 }
