@@ -5,18 +5,31 @@ import "./index.css"
 import "./components/Button/Button.css"
 export default function App() {
   const [notes, setNotes] = useState(() => {
-  const saved = localStorage.getItem("notes");
-  if (saved) return JSON.parse(saved);
-  return [
+  try {
+    const saved = localStorage.getItem("notes");
+    if (!saved || saved === "undefined") {
+      return [
+        {
+          id: Date.now(),
+          title: "Простая заметка",
+          text: "Простой текст для простой заметки чтобы не пустовала иначе скучно"
+        }
+      ];
+    }
+    return JSON.parse(saved);
+  } catch {
+    return [
       {
         id: Date.now(),
         title: "Простая заметка",
         text: "Простой текст для простой заметки чтобы не пустовала иначе скучно"
       }
     ];
-  });
+  }
+});
   const [overlayOpen, setOverlayOpen] = useState(false)
   const [editingNote, setEditingNote] = useState(null)
+  const isEditing = notes.some(n => n.id === editingNote?.id);
   const saveNotes = (newNotes) =>
   {
     setNotes(newNotes)
@@ -80,8 +93,8 @@ export default function App() {
           (
             <div className="overlay" onClick={closeOverlay}>
               <div className="modal" onClick={e => e.stopPropagation()}>
-                <h1> {notes.find(n => n.id === editingNote.id) ? "Редактирование" : "Новая заметка"}   </h1>
-                <input type="text" placeholder="Название" value={editingNote.title} onChange={(e) => setEditingNote({...editingNote, title: e.target.value})}/>
+                <h1> {isEditing ? "Редактирование" : "Новая заметка"}   </h1>
+                <input type="text" maxLength={48} placeholder="Название" value={editingNote.title} onChange={(e) => setEditingNote({...editingNote, title: e.target.value})}/>
                 <textarea placeholder="Текст" value={editingNote.text} onChange={(e) => setEditingNote({...editingNote, text: e.target.value})}/>
                 <div className="row">
                   <button className="button" onClick={handleSave}>Сохранить</button>

@@ -13,6 +13,8 @@
     text-align: center;
     background: #854F6C;
     transition: transform 0.2s ease, opacity 0.2s ease;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .card-note:hover
