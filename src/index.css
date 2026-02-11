@@ -16,12 +16,6 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -30,8 +24,8 @@ h1 {
 header {
   height: 80px;
   display: flex;
+  justify-content: center;
   align-items:center;
-  justify-content: space-between;
   background: #DFB6B2;
   color: #190019;
   padding: 20px;
@@ -44,75 +38,9 @@ main {
   padding-top: 2rem;
 }
 
-header h3 {
-  margin: 0;
-}
-
-header span {
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-ul
-{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-li 
-{
-  margin-bottom: 8px; 
-  font-size: medium;
-}
-
-section ul {
-  list-style: none;
-}
-
-section {
-  border: 1px solid #1a1a1a;
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-p {
-  grid:unset;
-}
-
 .row {
   display: flex;
   flex-direction: row;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-}
-
-center {
-  align-items: center;
-  padding: 10px;
-}
-
-.screen
-{
-  display: flex;
-  height: 100vh;
-}
-
-.left-path
-{
-  display: flex;
-  flex: 1;
-  background: #e9b2b2;
-}
-
-.right-path
-{
-  display: flex;
-  flex: 1;
 }
 
 .overlay
